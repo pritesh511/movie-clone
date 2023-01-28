@@ -1,0 +1,127 @@
+.MainAppBar {
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border-bottom: 1px solid white;
+}
+
+.SearchWrapper {
+  width: 70% !important;
+  background-color: #1a2536;
+}
+
+.drawerItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 13px 0 !important;
+}
+
+.Avatar {
+  width: 60px !important;
+  height: 60px !important;
+}
+
+.DrawerMain {
+  background-color: #1f2a3c !important;
+  height: 100% !important;
+}
+
+.AvtarName {
+  font-family: "Open Sans", sans-serif !important;
+  color: #d4d7dd;
+  margin: 11px 0 0 0 !important;
+}
+
+.DrawerItem {
+  padding: 0 !important;
+  margin: 0 0 4px 0;
+}
+
+.ItemButton {
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 8px 0;
+}
+
+.ItemButton:hover {
+  background-color: #1a2536 !important;
+}
+
+.ItemButton.active {
+  border-right: 1px solid #00e0ff;
+  background-color: #1a2536 !important;
+}
+
+.ItemIcon {
+  height: 18px !important;
+  width: 18px !important;
+  color: #d4d7dd;
+}
+
+.ItemIcon.active {
+  color: #00e0ff;
+}
+
+.ItemText {
+  margin: 0 !important;
+  flex: 0 0 60% !important;
+}
+
+.ItemText span {
+  font-family: "Open Sans", sans-serif !important;
+  color: #d4d7dd;
+  font-size: 15px;
+  line-height: 15px;
+}
+
+.ItemText.active span {
+  color: #00e0ff !important;
+}
+
+.MovieContainer {
+  padding: 16px 0;
+  display: flex;
+  align-items: stretch;
+  flex: 1 1 0;
+  flex-wrap: wrap;
+  cursor: pointer;
+}
+
+.MovieCard {
+  padding: 7px;
+  background-color: #394b61 !important;
+  border-radius: 11px;
+  margin: 8px;
+}
+
+.CardImage {
+  height: 188px;
+  max-width: 157px;
+  min-width: 157px;
+  border-radius: 6;
+}
+
+.cardMovieName {
+  font-size: 15px;
+  line-height: 20px;
+  color: #d4d7dd;
+  font-family: "Open Sans", sans-serif !important;
+}
+
+.CardContentWrap {
+  max-width: 157px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.CardIcon {
+  font-size: 20px !important;
+  color: #d4d7dd;
+  cursor: pointer;
+}
+
+.MainWrap {
+  display: flex;
+  flex-direction: column;
+}
