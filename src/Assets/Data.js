@@ -46,7 +46,7 @@ export const data = [
     Country: "USA",
     Awards: "9 wins & 21 nominations.",
     Poster:
-      "https://images-na.ssl-images-amazon.com/images/S/pv-target-images/d0688a1d44131c72 39999cad2ceeec122383367b38450c4f0d005127442d7d94._RI_V_TTW_.jpg",
+      "https://images-na.ssl-images-amazon.com/images/S/pv-target-images/d0688a1d44131c7239999cad2ceeec122383367b38450c4f0d005127442d7d94._RI_V_TTW_.jpg",
     Metascore: "65",
     imdbRating: "7.2",
     imdbVotes: "533,874",

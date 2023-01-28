@@ -17,8 +17,11 @@ import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlin
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import { Avatar, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const Drawerbar = ({ toggleDrawer, openDrawer, anchor }) => {
+  const navigate = useNavigate();
+  const history = window.location.pathname;
   const list = (anchor) => (
     <Box
       className="DrawerMain"
@@ -35,12 +38,24 @@ const Drawerbar = ({ toggleDrawer, openDrawer, anchor }) => {
           />
           <Typography className="AvtarName">Pritesh M</Typography>
         </ListItem>
-        <ListItem className="DrawerItem">
-          <ListItemButton className="ItemButton active">
+        <ListItem
+          className="DrawerItem"
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          <ListItemButton
+            className={`ItemButton ${history === "/" && "active"}`}
+          >
             <ListItemIcon style={{ minWidth: "35px" }}>
-              <SearchRoundedIcon className="ItemIcon active" />
+              <SearchRoundedIcon
+                className={`ItemIcon ${history === "/" && "active"}`}
+              />
             </ListItemIcon>
-            <ListItemText className="ItemText active" primary="Discover" />
+            <ListItemText
+              className={`ItemText ${history === "/" && "active"}`}
+              primary="Discover"
+            />
           </ListItemButton>
         </ListItem>
         <ListItem className="DrawerItem">
@@ -51,20 +66,44 @@ const Drawerbar = ({ toggleDrawer, openDrawer, anchor }) => {
             <ListItemText className="ItemText" primary="Playlist" />
           </ListItemButton>
         </ListItem>
-        <ListItem className="DrawerItem">
-          <ListItemButton className="ItemButton">
+        <ListItem
+          className="DrawerItem"
+          onClick={() => {
+            navigate("/movie");
+          }}
+        >
+          <ListItemButton
+            className={`ItemButton ${history === "/movie" && "active"}`}
+          >
             <ListItemIcon style={{ minWidth: "35px" }}>
-              <LiveTvRoundedIcon className="ItemIcon" />
+              <LiveTvRoundedIcon
+                className={`ItemIcon ${history === "/movie" && "active"}`}
+              />
             </ListItemIcon>
-            <ListItemText className="ItemText" primary="Movie" />
+            <ListItemText
+              className={`ItemText ${history === "/movie" && "active"}`}
+              primary="Movie"
+            />
           </ListItemButton>
         </ListItem>
-        <ListItem className="DrawerItem">
-          <ListItemButton className="ItemButton">
+        <ListItem
+          className="DrawerItem"
+          onClick={() => {
+            navigate("/tv-show");
+          }}
+        >
+          <ListItemButton
+            className={`ItemButton ${history === "/tv-show" && "active"}`}
+          >
             <ListItemIcon style={{ minWidth: "35px" }}>
-              <DesktopWindowsRoundedIcon className="ItemIcon" />
+              <DesktopWindowsRoundedIcon
+                className={`ItemIcon ${history === "/tv-show" && "active"}`}
+              />
             </ListItemIcon>
-            <ListItemText className="ItemText" primary="Tv Shows" />
+            <ListItemText
+              className={`ItemText ${history === "/tv-show" && "active"}`}
+              primary="Tv Shows"
+            />
           </ListItemButton>
         </ListItem>
         <ListItem className="DrawerItem">

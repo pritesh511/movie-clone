@@ -4,10 +4,20 @@ import MovieCard from "../Components/MovieCard";
 import { data } from "../Assets/Data";
 
 const Home = () => {
-  const [allData, setAllData] = useState(data);
+  const [allData, setAllData] = useState([]);
+  let pathName = window.location.pathname;
   useEffect(() => {
-    setAllData(data);
-  }, []);
+    if (pathName === "/movie") {
+      let filterMovieData = data.filter((item) => item.Type === "movie");
+      setAllData(filterMovieData);
+    } else if (pathName === "/tv-show") {
+      let filterShowData = data.filter((item) => item.Type === "series");
+      console.log("filterMovieData", filterShowData);
+      setAllData(filterShowData);
+    } else {
+      setAllData(data);
+    }
+  }, [pathName]);
   return (
     <React.Fragment>
       <div className="MainWrap">

@@ -6,9 +6,12 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import PlayCircleOutlineOutlinedIcon from "@mui/icons-material/PlayCircleOutlineOutlined";
 import ControlPointOutlinedIcon from "@mui/icons-material/ControlPointOutlined";
+import { useNavigate } from "react-router-dom";
 
 const MovieCard = ({ movie }) => {
-  console.log(movie);
+  const TempUrl = movie?.Title.replace(/[^\w ]/, "").split(" ");
+  const MainUrl = TempUrl.join("-").toLowerCase();
+  const navigate = useNavigate();
   return (
     <React.Fragment>
       <Card sx={{ maxWidth: 178 }} className="MovieCard">
@@ -23,7 +26,14 @@ const MovieCard = ({ movie }) => {
             <Typography className="cardMovieName">{movie?.Title}</Typography>
           </CardContent>
           <CardActions style={{ padding: 0, margin: "8px 0 0 0" }}>
-            <PlayCircleOutlineOutlinedIcon className="CardIcon" />
+            <PlayCircleOutlineOutlinedIcon
+              className="CardIcon"
+              onClick={() => {
+                navigate(`/movie-details/${MainUrl}`, {
+                  state: movie,
+                });
+              }}
+            />
             <ControlPointOutlinedIcon className="CardIcon" />
           </CardActions>
         </div>
