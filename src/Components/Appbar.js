@@ -12,6 +12,8 @@ import SearchIcon from "@mui/icons-material/Search";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import Drawerbar from "./Drawerbar";
+import { useDispatch } from "react-redux";
+import { searchFilter } from "../Redux/Action";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -59,6 +61,7 @@ const Appbar = () => {
     bottom: false,
     right: false,
   });
+  const dispatch = useDispatch();
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -158,6 +161,7 @@ const Appbar = () => {
               <StyledInputBase
                 placeholder="Search Movie Here"
                 inputProps={{ "aria-label": "search" }}
+                onChange={(e) => dispatch(searchFilter(e.target.value))}
               />
             </Search>
             <Box sx={{ flexGrow: 1 }} />
