@@ -7,11 +7,20 @@ import Typography from "@mui/material/Typography";
 import PlayCircleOutlineOutlinedIcon from "@mui/icons-material/PlayCircleOutlineOutlined";
 import ControlPointOutlinedIcon from "@mui/icons-material/ControlPointOutlined";
 import { useNavigate } from "react-router-dom";
+import { myList } from "../Redux/Action";
+import { useDispatch } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const MovieCard = ({ movie }) => {
   const TempUrl = movie?.Title.replace(/[^\w ]/, "").split(" ");
   const MainUrl = TempUrl.join("-").toLowerCase();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const addMyList = (movie) => {
+    dispatch(myList(movie));
+    toast.success("Movie added in your list successfully");
+  };
   return (
     <React.Fragment>
       <Card sx={{ maxWidth: 178 }} className="MovieCard">
@@ -34,10 +43,14 @@ const MovieCard = ({ movie }) => {
                 });
               }}
             />
-            <ControlPointOutlinedIcon className="CardIcon" />
+            <ControlPointOutlinedIcon
+              className="CardIcon"
+              onClick={() => addMyList(movie)}
+            />
           </CardActions>
         </div>
       </Card>
+      <ToastContainer />
     </React.Fragment>
   );
 };

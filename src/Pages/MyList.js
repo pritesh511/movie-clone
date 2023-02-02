@@ -3,21 +3,12 @@ import Appbar from "../Components/Appbar";
 import MovieCard from "../Components/MovieCard";
 import { useSelector } from "react-redux";
 
-const Home = () => {
+const MyList = () => {
   const [allData, setAllData] = useState([]);
-  const FilterData = useSelector((state) => state.Search.Movie_List);
-  let pathName = window.location.pathname;
+  const FilterData = useSelector((state) => state.Search.MY_List);
   useEffect(() => {
-    if (pathName === "/movie") {
-      let filterMovieData = FilterData.filter((item) => item.Type === "movie");
-      setAllData(filterMovieData);
-    } else if (pathName === "/tv-show") {
-      let filterShowData = FilterData.filter((item) => item.Type === "series");
-      setAllData(filterShowData);
-    } else {
-      setAllData(FilterData);
-    }
-  }, [pathName, FilterData]);
+    setAllData(FilterData);
+  }, [FilterData]);
   return (
     <React.Fragment>
       <div className="MainWrap">
@@ -32,4 +23,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default MyList;

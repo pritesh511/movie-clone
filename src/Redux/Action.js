@@ -4,3 +4,10 @@ export const searchFilter = (value) => {
     payload: value,
   };
 };
+
+export const myList = (item) => {
+  return {
+    type: "ADD_MY_LIST",
+    payload: item,
+  };
+};

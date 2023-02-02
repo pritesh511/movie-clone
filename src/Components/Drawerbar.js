@@ -106,12 +106,24 @@ const Drawerbar = ({ toggleDrawer, openDrawer, anchor }) => {
             />
           </ListItemButton>
         </ListItem>
-        <ListItem className="DrawerItem">
-          <ListItemButton className="ItemButton">
+        <ListItem
+          className="DrawerItem"
+          onClick={() => {
+            navigate("/my-list");
+          }}
+        >
+          <ListItemButton
+            className={`ItemButton ${history === "/my-list" && "active"}`}
+          >
             <ListItemIcon style={{ minWidth: "35px" }}>
-              <FormatListBulletedRoundedIcon className="ItemIcon" />
+              <FormatListBulletedRoundedIcon
+                className={`ItemIcon ${history === "/my-list" && "active"}`}
+              />
             </ListItemIcon>
-            <ListItemText className="ItemText" primary="My List" />
+            <ListItemText
+              className={`ItemText ${history === "/my-list" && "active"}`}
+              primary="My List"
+            />
           </ListItemButton>
         </ListItem>
       </List>
