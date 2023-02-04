@@ -6,53 +6,99 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import PlayCircleOutlineOutlinedIcon from "@mui/icons-material/PlayCircleOutlineOutlined";
 import ControlPointOutlinedIcon from "@mui/icons-material/ControlPointOutlined";
-import { useNavigate } from "react-router-dom";
-import { myList } from "../Redux/Action";
+import {
+  myList,
+  setAnimationDetailsCard,
+  setMovieDetailsCard,
+} from "../Redux/Action";
 import { useDispatch } from "react-redux";
-import { ToastContainer, toast } from "react-toastify";
+// import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { withStyles } from "@material-ui/core";
+import { Grid } from "@mui/material";
 
-const MovieCard = ({ movie }) => {
-  const TempUrl = movie?.Title.replace(/[^\w ]/, "").split(" ");
-  const MainUrl = TempUrl.join("-").toLowerCase();
-  const navigate = useNavigate();
+const MovieCard = (props) => {
+  const { movie, classes } = props;
   const dispatch = useDispatch();
   const addMyList = (movie) => {
     dispatch(myList(movie));
-    toast.success("Movie added in your list successfully");
+    // toast.success("Movie added in your list successfully");
   };
+
+  const handleMovieDetailCard = (movie) => {
+    dispatch(setAnimationDetailsCard(true));
+    setTimeout(() => {
+      dispatch(setMovieDetailsCard(movie));
+    }, 1000);
+  };
+
   return (
     <React.Fragment>
-      <Card sx={{ maxWidth: 178 }} className="MovieCard">
-        <CardMedia
-          component="img"
-          alt="green iguana"
-          className="CardImage"
-          image={movie?.Poster}
-        />
-        <div className="CardContentWrap">
-          <CardContent style={{ padding: 0, margin: "8px 0 0 0" }}>
-            <Typography className="cardMovieName">{movie?.Title}</Typography>
-          </CardContent>
-          <CardActions style={{ padding: 0, margin: "8px 0 0 0" }}>
-            <PlayCircleOutlineOutlinedIcon
-              className="CardIcon"
-              onClick={() => {
-                navigate(`/movie-details/${MainUrl}`, {
-                  state: movie,
-                });
-              }}
-            />
-            <ControlPointOutlinedIcon
-              className="CardIcon"
-              onClick={() => addMyList(movie)}
-            />
-          </CardActions>
-        </div>
-      </Card>
-      <ToastContainer />
+      <Grid className={classes.MovieCardWrap}>
+        <Card className={classes.MovieCard}>
+          <CardMedia
+            component="img"
+            alt="green iguana"
+            className={classes.CardImage}
+            image={movie?.Poster}
+          />
+          <div className={classes.CardContentWrap}>
+            <CardContent style={{ padding: 0, margin: "8px 0 0 0" }}>
+              <Typography className={classes.CardMovieName}>
+                {movie?.Title}
+              </Typography>
+            </CardContent>
+            <CardActions style={{ padding: 0, margin: "8px 0 0 0" }}>
+              <PlayCircleOutlineOutlinedIcon
+                className={classes.CardIcon}
+                onClick={() => handleMovieDetailCard(movie)}
+              />
+              <ControlPointOutlinedIcon
+                className={classes.CardIcon}
+                onClick={() => addMyList(movie)}
+              />
+            </CardActions>
+          </div>
+        </Card>
+      </Grid>
+      {/* <ToastContainer /> */}
     </React.Fragment>
   );
 };
 
-export default MovieCard;
+const styles = () => ({
+  MovieCard: {
+    backgroundColor: "#1a2536 !important",
+    maxWidth: "178px",
+    padding: "10px",
+    borderRadius: "11px",
+  },
+  MovieCardWrap: {
+    padding: "8px",
+  },
+  CardContentWrap: {
+    maxWidth: "157px",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+  },
+  CardImage: {
+    height: "188px",
+    maxWidth: "157px",
+    minWidth: "157px",
+    borderRadius: 6,
+  },
+  CardMovieName: {
+    fontSize: "15px",
+    lineHeight: "20px",
+    color: "#d4d7dd",
+    fontFamily: "Open Sans !important",
+  },
+  CardIcon: {
+    fontSize: "20px !important",
+    color: "#d4d7dd",
+    cursor: "pointer",
+  },
+});
+
+export default withStyles(styles)(MovieCard);

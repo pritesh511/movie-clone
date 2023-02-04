@@ -7,21 +7,19 @@ import MovieDetails from "./Pages/MovieDetails";
 
 const App = () => {
   return (
-    <div className="container">
-      <Router>
-        <Routes>
-          <Route exact path="/" element={<Home />}></Route>
-          <Route
-            exact
-            path="/movie-details/:id"
-            element={<MovieDetails />}
-          ></Route>
-          <Route exact path="/movie" element={<Home />}></Route>
-          <Route exact path="/tv-show" element={<Home />}></Route>
-          <Route exact path="/my-list" element={<MyList />}></Route>
-        </Routes>
-      </Router>
-    </div>
+    <Router>
+      <Routes>
+        <Route exact path="/" element={<Home />}></Route>
+        <Route
+          exact
+          path="/movie-details/:id"
+          element={<MovieDetails />}
+        ></Route>
+        <Route exact path="/movie" element={<Home />}></Route>
+        <Route exact path="/tv-show" element={<Home />}></Route>
+        <Route exact path="/my-list" element={<MyList />}></Route>
+      </Routes>
+    </Router>
   );
 };
 

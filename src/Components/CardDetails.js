@@ -36,9 +36,6 @@ const CardDetails = ({ usr }) => {
               <Typography className="cardRightItem">{usr?.Awards}</Typography>
             </ListItem>
           </List>
-          {/* <Typography variant="h5" className="DetailDec">
-            {usr?.Title}
-          </Typography> */}
           <div className="ButtonWrap">
             <Button variant="contained" className="PlayButton">
               Play Movie
